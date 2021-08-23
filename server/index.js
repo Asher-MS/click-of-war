@@ -15,7 +15,7 @@ let points={
 
 io.on('connection',(socket)=>{
     console.log("new user connected");
-    console.log(socket);
+    // console.log(socket);
     socket.on("new_message",(msg)=>{
         updatePoints(msg);
       
@@ -27,12 +27,14 @@ server.listen(port,()=>{
 });
 
 var updatePoints=function(data){
+        
+        
     
-    
-        points[data["teamId"]]=points[data["teamId"]]+data["noOfClicks"]-points[data["teamId"]];
-
-   
-
+        if(points[data["teamId"]]){
+            points[data["teamId"]]=points[data["teamId"]]+1;
+        }else{
+            points[data["teamId"]]=1;
+        }
 
 }
 
@@ -46,5 +48,5 @@ setInterval(()=>{
             }
     }
     // console.log("HIGHEST SCORER is "+max_scorer+" WITH "+max+" POINTS");
-    // console.log(points);
+    console.log(points);
 },1000)
