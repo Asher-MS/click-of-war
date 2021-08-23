@@ -44,7 +44,7 @@ setInterval(()=>{
     for(var i in points){
             if(points[i]>max){
                 max=points[i];
-            max_scorer=i;
+                max_scorer=i;
             }
     }
     // console.log("HIGHEST SCORER is "+max_scorer+" WITH "+max+" POINTS");
